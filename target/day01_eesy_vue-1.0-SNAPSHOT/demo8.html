@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>快速入门</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!-- v-bind: 可以简写成 : -->
+    <font size="5" v-bind:color="ys1">猴六</font>
+    <font size="5" :color="ys2">🐒七</font>
+
+</div>
+
+<script>
+    //view model
+    new Vue({
+       el:"#app",
+       data:{
+           ys1:"red",
+           ys2:"green"
+       }
+    });
+
+</script>
+
+</body>
+</html>

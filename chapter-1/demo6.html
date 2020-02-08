@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<!-- 1.导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+
+<div id="app">
+    <houliu v-for="item in items" v-bind:hou="item"></houliu>
+
+</div>
+
+<script type="application/javascript">
+
+    //注册一个名字叫做houliu的Vue组件
+    Vue.component("houliu",{
+        props: ['hou'], //props:用来在组件中接收参数，必须写
+        template: '<li>{{hou}}</li>'   //模版
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            items: ["Java","Linux","前端"]
+        }
+    });
+</script>
+
+</body>
+</html>

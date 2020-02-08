@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<!-- 1.导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(item,index) in items">{{item.message}}======{{index}}</li>
+    </ul>
+
+</div>
+
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data:{
+            items:[
+                {message:'猴六写Java'},
+                {message:'猴六写Vue'},
+                {message:'猴六写Spring'},
+            ]
+        }
+    });
+</script>
+
+</body>
+</html>

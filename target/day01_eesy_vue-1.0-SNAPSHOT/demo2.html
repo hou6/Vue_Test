@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>快速入门</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    {{ message }}
+    <button v-on:click="fun1('Vue v-on')">Vue的onClick</button>
+    <!--<button @click="fun1('Vue v-on')">Vue的onClick</button>-->
+
+</div>
+
+<script>
+    //view model
+    //创建Vue对象
+    new Vue({
+        el: "#app",
+        data:{
+            message: "Hello Vue !!!"
+        },
+        methods:{
+            fun1:function(msg){
+                alert("hello");
+                this.message = msg;
+            }
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

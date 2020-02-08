@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速入门</title>
+    <style>
+        #div{
+            background-color: #4cdc4b;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!-- @submit.prevent ：阻止事件的行为-->
+
+    <form @submit.prevent action="http://www.itheima.com" method="get">
+        <input type="submit" value="提交">
+    </form>
+
+    <!--<form action="http://www.itheima.com" method="get" onsubmit=" return checkForm()">-->
+        <!--<input type="submit" value="提交">-->
+    <!--</form>-->
+
+    <br>
+
+    <div @mouseover="fun1" id="div">
+        <!-- .stop : 可以停止事件传播-->
+        <textarea @mouseover.stop="fun2($event)">这是一个文件域</textarea>
+    </div>
+
+</div>
+
+<script>
+    //view model
+    new Vue({
+        el:"#app",
+        methods:{
+            fun1:function () {
+                alert("鼠标悬停在div上了(vue)")
+            },
+            fun2:function (event) {
+                alert("鼠标悬停在textarea上了(vue)");
+            }
+        }
+    });
+
+    //传统js
+    function checkForm() {
+        alert(1);
+        //表单验证必须要一个明确的boolean类型返回值
+        //在应用验证方法时必须加上 return 方法名称
+        return false;  //不提交
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<!-- 1.导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+
+<div id="app">
+    <!--//遍历两个数组-->
+    <stu v-for="student in students" v-bind:S="student"></stu>
+    <tea v-for="teacher in teachers" v-bind:T="teacher"></tea>
+
+</div>
+
+<script type="application/javascript">
+
+    //注册两个组件
+    Vue.component("stu",{
+        props: ['S'],
+        template: '<h1>{{S}}</h1>'
+    });
+
+    Vue.component("tea",{
+        props: ['T'],
+        template: '<h1>{{T}}</h1>'
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            students:["张三","李四","王五","猴六"],
+            teachers:["肖老师","刘老师","魏老师"]
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速入门</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="(key,value) in product">{{value}}====={{key}}</li>
+    </ul>
+
+    <ol>
+        <li v-for="i in 8">
+            {{i}}
+        </li>
+    </ol>
+
+</div>
+
+<script>
+    //view model
+    //创建Vue对象
+    new Vue({
+        el:"#app",
+        data:{
+            product:{
+                id: 1,
+                name: "华为笔记本",
+                price: 6399
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

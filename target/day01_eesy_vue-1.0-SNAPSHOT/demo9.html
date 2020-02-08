@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速入门</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <form action="http://www.baidu.com" method="get">
+        <!-- v-model :取值 -->
+        用户名:<input type="text" name="username" v-model="user.username"> <br>
+        密&nbsp;&nbsp;&nbsp;码:<input type="text" name="password" v-model="user.password">
+    </form>
+
+</div>
+
+<script>
+    //view model
+    //创建Vue对象
+    new Vue({
+        el:"#app",  //由vue接管id为app的区域
+        data:{
+            user:{
+                username:"张三",
+                password:"qq123456"
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
