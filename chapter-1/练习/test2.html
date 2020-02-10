@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--<h2>姓名</h2>-->
+    <!--<or>-->
+        <!--<li>张三</li>-->
+        <!--<li>李四</li>-->
+        <!--<li>王五</li>-->
+        <!--<li>猴六</li>-->
+    <!--</or>-->
+    <houliu>
+        <houliu-one slot="houliu-one" :title="title"></houliu-one>
+        <houliu-two slot="houliu-two" v-for="(name,index) in names"
+                    :name="name" :index="index" v-on:remove="removeName(index)" :key="index"></houliu-two>
+    </houliu>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+
+<script>
+
+    Vue.component("houliu",{
+        template: '<div>\
+                    <slot name="houliu-one"></slot>\
+                    <or>\
+                        <slot name="houliu-two"></slot>\
+                    </or>\
+                   </div>'
+    });
+
+    Vue.component("houliu-one",{
+        props: ['title'],
+        template: '<h2>{{title}}</h2>'
+    });
+
+    Vue.component("houliu-two",{
+        props: ['name','index'],
+        template: '<li>{{index}}---{{name}} <button @click="remove">删除</button></li>',
+        methods: {
+            remove: function (index) {
+                this.$emit('remove',index);   //自定义事件分发
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            title: "姓名",
+            names: ['张三',"李四","王武","猴六"]
+        },
+        methods: {
+            removeName: function (index) {
+                this.names.splice(index,1);   //代表从哪个索引位删，删几个
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

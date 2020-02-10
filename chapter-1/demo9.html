@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<!-- view层，模版 -->
+<div id="app">
+    <!--<p>标题</p>-->
+    <!--<ul>-->
+        <!--<li>Java</li>-->
+        <!--<li>Linux</li>-->
+        <!--<li>Python</li>-->
+    <!--</ul>-->
+
+    <todo>
+        <todo-title slot="todo-title" :title="title"></todo-title>
+        <todo-items slot="todo-items" v-for="(item,index) in todoItems"
+                    :item="item" :index="index" v-on:remove="removeItems(index)" :key="index"></todo-items>
+    </todo>
+</div>
+
+<!-- 1.导入Vue.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script>
+    // slot:插槽
+    Vue.component("todo",{
+        template: '<div>\
+                    <slot name="todo-title"></slot>\
+                    <ul>\
+                        <slot name="todo-items"></slot>\
+                    </ul>\
+                   </div>'
+    });
+
+    Vue.component("todo-title",{
+        props: ['title'],
+        template: '<div>{{title}}</div>'
+    });
+
+    Vue.component("todo-items",{
+        props: ['item','index'],
+        //只能绑定当前组件的方法
+        template: '<li>{{index}}===={{item}} <button @click="remove">删除</button></li>',
+        methods: {
+            remove: function (index) {
+                // this.$emit("事件名",参数) : 自定义事件分发
+                this.$emit('remove',index);
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            title: "猴六学Vue",
+            todoItems: ['猴六学Java','猴六学Vue','猴六学Spring']
+        },
+        methods: {
+            removeItems: function (index) {
+                console.log("删除【" + this.todoItems[index] + "】 成功");
+                this.todoItems.splice(index,1);   //一次删除一个元素，index是索引,splice是js里删除元素的方法，它有很多重载方法
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <div>{{name}}最帅，有{{num}}个妹子喜欢</div>
+    <br>
+    <div><button @click="num++">+</button></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            name: "houliu",
+            num: '1'
+        }
+    });
+</script>
+
+</body>
+</html>
